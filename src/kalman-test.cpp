@@ -17,8 +17,8 @@ int main(int argc, char* argv[]) {
   //n,m
   double dt = 0.1;
   int n = 3;
-  int m = 1;
-  auto kf = setup_KalmanFilter(3,1,dt);
+  int m = 2;
+  auto kf = setup_KalmanFilter(n,m,dt);
 
    // List of noisy position measurements (y)
   std::vector<double> measurements = {
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 
   for(int i = 0; i < measurements.size(); i++) {
     t += dt;
-    y << measurements[i];
+    y << measurements[i],measurements[i];
     kf->update(y);
     std::cout << "t = " << t << ", " << "y[" << i << "] = " << y.transpose()
         << ", x_hat[" << i << "] = " << kf->state().transpose() << std::endl;

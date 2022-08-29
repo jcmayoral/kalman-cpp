@@ -25,12 +25,14 @@ std::shared_ptr<KalmanFilter> setup_KalmanFilter(int n, int m,double dt =0.1) {
   Eigen::MatrixXd P(n, n); // Estimate error covariance
 
   // Discrete LTI projectile motion, measuring position only
-    A << 1, dt, 0, 0, 1, dt, 0, 0, 1;
-  C << 1, 0, 0;
+  A << 1, dt, 0, 0, 1, dt, 0, 0, 1;
+  C << 1, 0, 0, 1,0,0;
 
   // Reasonable covariance matrices
   Q << .05, .05, .0, .05, .05, .0, .0, .0, .0;
-  R << 5;
+  std::cout << "A " << std::endl;
+  R << 10,0.5,0.5,10;
+
   P << .1, .1, .1, .1, 10000, 10, .1, 10, 100;
 
   std::cout << "A: \n" << A << std::endl;
