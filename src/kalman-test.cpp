@@ -9,7 +9,7 @@
 #include <vector>
 #include <Eigen/Dense>
 
-#include "kalman.hpp"
+#include <kalman-cpp/kalman.hpp>
 
 int main(int argc, char* argv[]) {
 

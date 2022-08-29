@@ -4,16 +4,16 @@ project(kalman-cpp)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 find_package(Eigen3 REQUIRED)
-include_directories(${EIGEN3_INCLUDE_DIR})
+include_directories(${EIGEN3_INCLUDE_DIR} include)
 
-set(SOURCE_FILES kalman.cpp)
-set(TEST_FILES kalman-test.cpp)
+set(SOURCE_FILES src/kalman.cpp)
+set(TEST_FILES src/kalman-test.cpp)
 
-add_library({{PROJECT_NAME}} ${SOURCE_FILES})
-add_executable({{PROJECT_NAME}}-test ${TEST_FILES})
-target_link_libraries({{PROJECT_NAME}}-test {{PROJECT_NAME}} )
+add_library(${PROJECT_NAME} ${SOURCE_FILES})
+add_executable(${PROJECT_NAME}-test ${TEST_FILES})
+target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 
-install(TARGETS {{PROJECT_NAME}}
+install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
