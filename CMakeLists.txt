@@ -10,6 +10,7 @@ set(SOURCE_FILES src/kalman.cpp)
 set(TEST_FILES src/kalman-test.cpp)
 
 add_library(${PROJECT_NAME} ${SOURCE_FILES})
+
 add_executable(${PROJECT_NAME}-test ${TEST_FILES})
 target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 

@@ -10,6 +10,8 @@
 
 #include <kalman-cpp/kalman.hpp>
 
+using namespace kalman;
+
 KalmanFilter::KalmanFilter(
     double dt,
     const Eigen::MatrixXd& A,
